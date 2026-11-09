@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+vector <string> ans;
+
+void gen(string s){
+    if (s.size() >= 3){
+        for (int i = 1; i < s.size()-1; i++){
+            if (not((s[i] < s[i-1] and s[i] < s[i+1]) or (s[i] > s[i-1] and s[i] > s[i+1])))
+                return;
+        }
+    }
+    if (s.size() == N)
+        ans.push_back(s);
+    for (int i = ; i <= N; i++){
+        gen(s + char(i));
+    }
+}
+
+int main(){
+    cin >> N;
+    gen("");
+    for (string s : ans){
+        cout << s << endl;
+    }
+}
