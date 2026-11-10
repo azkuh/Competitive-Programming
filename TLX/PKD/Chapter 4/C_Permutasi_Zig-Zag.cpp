@@ -2,7 +2,7 @@
 using namespace std;
 
 int N;
-vector <string> ans;
+int vis[67];
 
 void gen(string s){
     if (s.size() >= 3){
@@ -12,16 +12,18 @@ void gen(string s){
         }
     }
     if (s.size() == N)
-        ans.push_back(s);
-    for (int i = ; i <= N; i++){
-        gen(s + char(i));
+        cout << s << endl;
+
+    for (int i = 1; i <= N; i++){
+        if(not(vis[i])){
+            vis[i] = 1;
+            gen(s + char(i + '0'));
+            vis[i] = 0;
+        }
     }
 }
 
 int main(){
     cin >> N;
     gen("");
-    for (string s : ans){
-        cout << s << endl;
-    }
 }
