@@ -2,6 +2,6 @@
 *.o
 *.out
 *.json
+*.hold
 .cph
 .vscode
-.hold
